@@ -15,27 +15,26 @@ prev_profit = 0
 month_of_change = []
 profit_change_list = []
 greatest_increase = ['',0]
-greatest_decrese = ['',99999999999]
+greatest_decrease = ['',99999999999]
 total_profit = 0
 
 # Read the csv and convert it into list of dictionaries
 with open(file_to_load) as budget_data:
     reader = csv.reader(budget_data)
-    cvs_header = next(reader)
-    print(f'cvs header: {cvs_header}')
+    csv_header = next(reader)
+    print(f'csv header: {csv_header}')
+
+
     for row in reader:
-
-
-
-         #Track The Totals
+        # Track the totals
         total_months = total_months + 1
-        total_profit = total_profit + int(row[1])
+        total_profit = total_profit
 
         #Track Profit Change
         profit_change = int(row[1]) - prev_profit
         prev_profit = int(row[1])
         profit_change_list = profit_change_list + [profit_change]
-        month_of_change = month_of_change = [row[0]]
+        month_of_change = month_of_change + [row[0]]
 
 
     # Calculate the greatest increase
@@ -44,9 +43,9 @@ with open(file_to_load) as budget_data:
         greatest_increase[1] = profit_change
 
     # Calculate the greatest decrease
-    if (profit_change < greatest_decrese[1]):
-        greatest_decrese[0] = row[0]
-        greatest_decrese[1] = profit_change
+    if (profit_change < greatest_decrease[1]):
+        greatest_decrease[0] = row[0]
+        greatest_decrease[1] = profit_change
 
     # Calculate the Average Profit Change
     profit_avg = sum(profit_change_list) / len(profit_change_list)
@@ -54,12 +53,13 @@ with open(file_to_load) as budget_data:
 
     #Generate Output Summary
     output = (
-        f'\nfinancial Analysis\n'
-        f'----------------------\n'
+        f'\nFinancial Analysis\n'
+        f'--------------------------\n'
         f'Total Months: {total_months}n'
-        f'Average Profit Change:{profit_avg}\n'
+        f'Total Profit: ${total_profit}\n'
+        f'Average Profit Change: ${profit_avg}\n'
         f'Greatest Increase in Profit:{greatest_increase[0]} (${greatest_increase[1]})\n'
-        f'Grearest Decrease in Profit: {greatest_decrese[0]} (${greatest_decrese[1]})\n'
+        f'Greatest Decrease in Profit: {greatest_decrease[0]} (${greatest_decrease[1]})\n'
     )
 
     #Print the Output
