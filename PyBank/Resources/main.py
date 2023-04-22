@@ -5,7 +5,7 @@ import os
 # Files to load and output
 file_to_path = r'/Users/mariaalsayed/Desktop/repo-hub/Python-Challenge2/PyBank/Resources/budget_data.csv'
 file_to_load = os.path.join(file_to_path)
-file_to_outpath = r'/Users/mariaalsayed/Desktop/repo-hub/Python-Challenge2/PyBank/Resources/budget_data.csv'
+file_to_outpath = r'/Users/mariaalsayed/Desktop/repo-hub/Python-Challenge2/PyBank/Resources/budget_data.txt'
 file_to_output = os.path.join(file_to_outpath)
 
 
@@ -28,7 +28,7 @@ with open(file_to_load) as budget_data:
     for row in reader:
         # Track the totals
         total_months = total_months + 1
-        total_profit = total_profit
+        total_profit += int(row[1])
 
         #Track Profit Change
         profit_change = int(row[1]) - prev_profit
@@ -38,26 +38,26 @@ with open(file_to_load) as budget_data:
 
 
     # Calculate the greatest increase
-    if (profit_change > greatest_increase[1]):
-        greatest_increase[0] = row[0]
-        greatest_increase[1] = profit_change
+        if (profit_change > greatest_increase[1]):
+            greatest_increase[0] = row[0]
+            greatest_increase[1] = profit_change
 
     # Calculate the greatest decrease
-    if (profit_change < greatest_decrease[1]):
-        greatest_decrease[0] = row[0]
-        greatest_decrease[1] = profit_change
+        if (profit_change < greatest_decrease[1]):
+            greatest_decrease[0] = row[0]
+            greatest_decrease[1] = profit_change
 
     # Calculate the Average Profit Change
-    profit_avg = sum(profit_change_list) / len(profit_change_list)
+        profit_avg = sum(profit_change_list) / len(profit_change_list)
 
 
     #Generate Output Summary
     output = (
         f'\nFinancial Analysis\n'
         f'--------------------------\n'
-        f'Total Months: {total_months}n'
-        f'Total Profit: ${total_profit}\n'
-        f'Average Profit Change: ${profit_avg}\n'
+        f'Total Months: {total_months}\n'
+        f'Total: ${total_profit}\n'
+        f'Average Change: ${profit_avg}\n'
         f'Greatest Increase in Profit:{greatest_increase[0]} (${greatest_increase[1]})\n'
         f'Greatest Decrease in Profit: {greatest_decrease[0]} (${greatest_decrease[1]})\n'
     )
