@@ -48,7 +48,7 @@ with open(file_to_load) as budget_data:
             greatest_decrease[1] = profit_change
 
     # Calculate the Average Profit Change
-        profit_avg = sum(profit_change_list) / len(profit_change_list)
+            profit_avg = sum(profit_change_list) / len(profit_change_list)
 
 
     #Generate Output Summary
