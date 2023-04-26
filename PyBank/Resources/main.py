@@ -3,9 +3,9 @@ import csv
 import os
 
 # Files to load and output
-file_to_path = r'/Users/mariaalsayed/Desktop/repo-hub/Python-Challenge2/PyBank/Resources/budget_data.csv'
+file_to_path = r'/Resources/budget_data.csv'
 file_to_load = os.path.join(file_to_path)
-file_to_outpath = r'/Users/mariaalsayed/Desktop/repo-hub/Python-Challenge2/PyBank/Resources/budget_data.txt'
+file_to_outpath = r'/Resources/budget_data.txt'
 file_to_output = os.path.join(file_to_outpath)
 
 
