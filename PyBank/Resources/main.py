@@ -6,7 +6,7 @@ import os
 #file_to_path = r'/Resources/budget_data.csv'
 file_to_load = os.path.join("Resources","budget_data.csv")
 #file_to_outpath = r'/Resources/budget_data.txt'
-file_to_output = os.path.join("Resources","budget_analysis.txt")
+file_to_output = os.path.join("Analysis","budget_analysis.txt")
 
 
 #Track Various Parameters
